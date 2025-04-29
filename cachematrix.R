@@ -1,22 +1,21 @@
-## Put comments here that give an overall description of what your
-## functions do
+## The following functions optimize the process of calculating the inverse of a matrix.
 
-## Write a short comment describing this function
-
-makeCacheMatrix <- function(x = matrix()) {
-        inv <- NULL # Initialize the cache
-        set <- function(y) {
-        x <<- y
-        inv <<- NULL # Clear the cached inverse
-    }
-    get <- function() x
-    setInverse <- function(inverse) inv <<- inverse
+makeCacheMatrix <- function(x = matrix()) 
+        {
+                inv <- NULL # Initialize the cache
+                set <- function(y) 
+                {
+                        x <<- y
+                        inv <<- NULL # Clear the cached inverse after being called
+                    }
+    get <- function() x # Returns the value of x
+    setInverse <- function(inverse) inv <<- inverse # Save the computed inverse of a matrix
     getInverse <- function() inv
     list(set = set, get = get,
          setInverse = setInverse,
-         getInverse = getInverse)
+         getInverse = getInverse) # Bundles together all the helper function into a single list
 
-}
+        }
 
 
 cacheSolve <- function(x, ...) {
